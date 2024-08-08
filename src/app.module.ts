@@ -14,7 +14,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       imports: [ConfigModule],
       connectionName: "test",
       useFactory: async (configService: ConfigService) => ({
-        uri: configService.get<string>('database.mongo'),
+        uri: process.env.MONGO_DATABASE,
       }),
       inject: [ConfigService],
     }),
