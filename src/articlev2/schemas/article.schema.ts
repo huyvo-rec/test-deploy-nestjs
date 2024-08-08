@@ -1,6 +1,6 @@
 import { Schema } from 'mongoose';
 
-export const ArticleSchema = new Schema({
+export const ArticleSchema2 = new Schema({
   name: {
     type: String,
     required: true,

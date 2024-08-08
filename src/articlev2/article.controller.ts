@@ -15,7 +15,7 @@ import {
 import { CreateArticleDTO } from './dto/article.dto';
 import { ArticleService } from './article.service';
 
-@Controller('article')
+@Controller('article2')
 export class ArticleController {
   constructor(private articleService: ArticleService) {}
 
