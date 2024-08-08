@@ -10,15 +10,15 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     ConfigModule.forRoot({
       envFilePath: ['.env.development.local'],
     }),
-    // MongooseModule.forRootAsync({
-    //   imports: [ConfigModule],
-    //   connectionName: "test",
-    //   useFactory: async (configService: ConfigService) => ({
-    //     uri: configService.get<string>('database.mongo'),
-    //   }),
-    //   inject: [ConfigService],
-    // }),
-    MongooseModule.forRoot("mongodb+srv://19521641:19521641@the-movie-film.yiwcjtd.mongodb.net/?retryWrites=true&w=majority", { useFindAndModify: false }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      connectionName: "test",
+      useFactory: async (configService: ConfigService) => ({
+        uri: "mongodb+srv://19521641:19521641@the-movie-film.yiwcjtd.mongodb.net/?retryWrites=true&w=majority",
+      }),
+      inject: [ConfigService],
+    }),
+    // MongooseModule.forRoot("mongodb+srv://19521641:19521641@the-movie-film.yiwcjtd.mongodb.net/?retryWrites=true&w=majority", { useFindAndModify: false }),
     ArticleModule,
   ],
   controllers: [AppController],
