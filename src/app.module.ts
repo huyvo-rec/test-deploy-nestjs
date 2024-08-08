@@ -14,7 +14,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       imports: [ConfigModule],
       connectionName: "test",
       useFactory: async (configService: ConfigService) => ({
-        uri: "mongodb://adminIT:CC26696736153F43F32C9B8FFF524@ec2-18-139-53-51.ap-southeast-1.compute.amazonaws.com:27597/rrdb_dev?authSource=admin",
+        uri: configService.get<string>('database.mongo'),
       }),
       inject: [ConfigService],
     }),
