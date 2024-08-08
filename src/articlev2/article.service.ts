@@ -6,7 +6,7 @@ import { CreateArticleDTO } from './dto/article.dto';
 @Injectable()
 export class ArticleService {
   constructor(
-    @InjectModel('Article') private readonly articleModel: Model<Article>,
+    @InjectModel('Testing') private readonly articleModel: Model<Article>,
   ) {}
 
   async getArticles(): Promise<Article[]> {
