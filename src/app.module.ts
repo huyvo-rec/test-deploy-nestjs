@@ -3,14 +3,21 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ArticleModule } from './article/article.module';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: ['.env.development.local'],
     }),
-    MongooseModule.forRoot("mongodb+srv://19521641:19521641@the-movie-film.yiwcjtd.mongodb.net/?retryWrites=true&w=majority", { useFindAndModify: false }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      connectionName: "test",
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get<string>('database.mongo'),
+      }),
+      inject: [ConfigService],
+    }),
     ArticleModule,
   ],
   controllers: [AppController],
