@@ -12,7 +12,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
-      connectionName: "test",
+      connectionName: "the-movie-film",
       useFactory: async (configService: ConfigService) => ({
         uri: process.env.MONGO_DATABASE,
       }),
