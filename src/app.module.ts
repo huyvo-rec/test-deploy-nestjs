@@ -19,7 +19,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       inject: [ConfigService],
     }),
     // MongooseModule.forRoot("mongodb://adminIT:CC26696736153F43F32C9B8FFF524@ec2-18-139-53-51.ap-southeast-1.compute.amazonaws.com:27597/rrdb_dev?authSource=admin", { useFindAndModify: false }),
-    ArticleModule,
+    // ArticleModule,
   ],
   controllers: [AppController],
   providers: [AppService],
